@@ -1,7 +1,7 @@
 var Burgers = require('../models/burger')
 var router = require('express').Router()
 
-
+// Get request for ALL BURGERS
 router.get('/api/burgers', (req, res, next)=>{
     Burgers.find({})
         .then(burgers =>{
@@ -12,6 +12,7 @@ router.get('/api/burgers', (req, res, next)=>{
         })
 })
 
+// Get request for SPECIFIC BURGERS
 router.get('/api/burgers/:id', (req, res, next)=>{
     Burgers.findById(req.params.id)
         .then(burger=>{
@@ -22,6 +23,7 @@ router.get('/api/burgers/:id', (req, res, next)=>{
         })
 })
 
+// Post request for ADDING BURGERS
 router.post('/api/burgers', (req, res, next)=>{
     Burgers.create(req.body)
         .then(burger => {
@@ -36,7 +38,7 @@ router.post('/api/burgers', (req, res, next)=>{
         })
 })
 
-
+// Put request for UPDATING BURGERS
 router.put('/api/burgers/:id', (req, res, next)=>{
     var action = 'Update Burger'
     Burgers.findByIdAndUpdate(req.params.id, req.body)
@@ -48,7 +50,7 @@ router.put('/api/burgers/:id', (req, res, next)=>{
         })
 })
 
-
+// Delete request for DELETING BURGERS
 router.delete('/api/burgers/:id', (req, res, next)=>{
     Burgers.findByIdAndRemove(req.params.id)
         .then(()=>{
@@ -59,6 +61,7 @@ router.delete('/api/burgers/:id', (req, res, next)=>{
         })
 })
 
+// Function to send responses
 function handleResponse(action, data, error){
     var response =  {
         message: action,
