@@ -1,5 +1,5 @@
 var mongoose = require('mongoose')
-var connectionString = "mongodb://student:student@ds056789.mlab.com:56789/burger-shack"
+var connectionString = "mongodb://master:master@ds028540.mlab.com:28540/burger-shack-kp"
 var connection = mongoose.connection
 
 
@@ -13,5 +13,5 @@ mongoose.connect(connectionString, {
 connection.on('error', console.error.bind(console, 'connection error: '))
 
 connection.once('open', ()=>{
-    console.log('Connected to DataBase BRO!!!')
+    console.log('Connected to Burger Shack DataBase')
 })
