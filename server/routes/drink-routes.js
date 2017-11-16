@@ -25,17 +25,7 @@ router.get('/api/drinks/:id', (req, res, next)=>{
 
 // Post request for ADDING DRINKS
 router.post('/api/drinks', (req, res, next) => {
-    if(!req.body.sizes.l || !req.body.sizes.m){
-        return res.send('INVALID DRINK PLEASE INCLUDE SIZES')
-    }
-    var drink = {
-        name: req.body.name,
-        sizes: {
-            l: req.body.sizes.l,
-            m: req.body.sizes.m
-        }
-    }
-   Drinks.create(drink)
+   Drinks.create(req.body)
     .then(drink=>{
         res.send(drink)
     })
